@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Research Assistant</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        #chat {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px 14px;
+            border-radius: 10px;
+            max-width: 80%;
+            white-space: pre-line;
+        }
+
+        .user {
+            background: #e3f2fd;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .bot {
+            background: #f1f1f1;
+            margin-right: auto;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #222;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎓 Student Research Assistant</h1>
+
+    <p class="subtitle">
+        Ask questions about research papers, journals, DOI, and research topics.
+    </p>
+
+    <div id="chat"></div>
+
+    <div class="input-area">
+        <input
+            type="text"
+            id="userInput"
+            placeholder="Ask your research question..."
+            onkeypress="handleKeyPress(event)"
+        >
+
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+</div>
+
+<script>
+
+function getResponse(message) {
+
+    message = message.toLowerCase().trim();
+
+    // Greeting
+    if (
+        message.includes("hello") ||
+        message.includes("hi") ||
+        message.includes("hey")
+    ) {
+        return `Hello! 👋
+
+Welcome to Student Research Assistant.
+
+I can help you with:
+
+📄 Research Papers
+📚 Journal Papers
+🔗 DOI
+📖 Reading Research Papers
+💡 Research Topics
+
+What would you like to know?`;
+    }
+
+    // DOI
+    if (message.includes("doi")) {
+        return `🔗 DOI — Digital Object Identifier
+
+A DOI is a unique and permanent identifier assigned to a research publication.
+
+You can use a DOI to:
+• Identify a specific research paper
+• Locate the paper online
+• Verify publication information
+
+Example:
+10.xxxx/xxxxx`;
+    }
+
+    // Finding papers
+    if (
+        message.includes("find paper") ||
+        message.includes("find papers") ||
+        message.includes("search paper") ||
+        message.includes("search papers") ||
+        message.includes("journal paper") ||
+        message.includes("journal papers")
+    ) {
+        return `📚 Finding Journal Papers
+
+You can search for research papers using:
+
+1. Google Scholar
+2. IEEE Xplore
+3. ScienceDirect
+4. SpringerLink
+5. PubMed
+
+When checking a paper, look for:
+• Journal name
+• Publication year
+• Volume and issue
+• DOI
+• Authors`;
+    }
+
+    // Reading papers
+    if (
+        message.includes("read paper") ||
+        message.includes("read research") ||
+        message.includes("how to read")
+    ) {
+        return `📖 How to Read a Research Paper
+
+Follow this order:
+
+1. Read the title
+2. Read the abstract
+3. Identify the research problem
+4. Understand the methodology
+5. Check the dataset
+6. Examine the results
+7. Identify limitations
+8. Read the conclusion
+
+Tip: Don't try to understand every technical detail during your first reading.`;
+    }
+
+    // Research topic
+    if (
+        message.includes("research topic") ||
+        message.includes("choose topic") ||
+        message.includes("select topic") ||
+        message.includes("topic selection")
+    ) {
+        return `💡 Choosing a Research Topic
+
+Consider these factors:
+
+1. Your area of interest
+2. Recent research trends
+3. Research gaps
+4. Dataset availability
+5. Technical feasibility
+6. Available time and resources
+
+A good research topic should address a clear and meaningful research problem.`;
+    }
+
+    // Research paper
+    if (
+        message.includes("what is a research paper") ||
+        message.includes("research paper meaning") ||
+        message.includes("define research paper")
+    ) {
+        return `📄 What is a Research Paper?
+
+A research paper is a scholarly document that presents original research, analysis, findings, or a review of existing research on a specific topic.
+
+A typical research paper contains:
+
+• Abstract
+• Introduction
+• Literature Review
+• Methodology
+• Results
+• Discussion
+• Conclusion
+• References`;
+    }
+
+    // Fallback
+    return `🤔 I'm not sure how to answer that.
+
+I can currently help you with:
+
+📄 Research Papers
+📚 Journal Papers
+🔗 DOI
+📖 Reading Research Papers
+💡 Research Topics
+
+Try asking something like:
+
+"What is DOI?"
+"How do I find journal papers?"
+"How do I read a research paper?"
+"How do I choose a research topic?"`;
+}
+
+
+function addMessage(text, sender) {
+
+    const chat = document.getElementById("chat");
+
+    const message = document.createElement("div");
+
+    message.className = "message " + sender;
+
+    message.textContent = text;
+
+    chat.appendChild(message);
+
+    chat.scrollTop = chat.scrollHeight;
+}
+
+
+function sendMessage() {
+
+    const input = document.getElementById("userInput");
+
+    const message = input.value.trim();
+
+    if (message === "") {
+        return;
+    }
+
+    addMessage(message, "user");
+
+    const response = getResponse(message);
+
+    setTimeout(function() {
+        addMessage(response, "bot");
+    }, 300);
+
+    input.value = "";
+}
+
+
+function handleKeyPress(event) {
+
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+}
+
+
+// Welcome message
+addMessage(
+`Hello! 👋
+
+I'm your Student Research Assistant.
+
+Ask me about research papers, journal papers, DOI, paper reading, or research topics.`,
+"bot"
+);
+
+</script>
+
+</body>
+</html>
