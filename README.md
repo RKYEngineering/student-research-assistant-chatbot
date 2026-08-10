@@ -73,6 +73,32 @@ Add PDF document question answering
 Add Retrieval-Augmented Generation (RAG)
 Add research paper summarization
 Deploy the chatbot as a permanent web application
+## 📸 Chatbot Screenshots
+
+### Welcome
+
+![Welcome](screenshots/welcome.jpg)
+
+### Research Paper
+
+![Research Paper](screenshots/research-paper.jpg)
+
+### DOI
+
+![DOI](screenshots/doi.jpg)
+
+### Journal Papers
+
+![Journal Papers](screenshots/journal-papers.jpg)
+
+### Reading a Research Paper
+
+![Reading Paper](screenshots/reading-paper.jpg)
+
+### Fallback Response
+
+![Fallback](screenshots/fallback.jpg)
+
 👨‍💻 Author
 
 RKYEngineering
