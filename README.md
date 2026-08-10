@@ -1,10 +1,10 @@
 # 🎓 Student Research Assistant Chatbot
 
-An interactive chatbot designed to help students understand basic research concepts and get guidance on research papers, journals, DOI, paper reading, and research topic selection.
+An interactive chatbot designed to help students understand basic research concepts and get guidance on research papers, journal papers, DOI, paper reading, and research topic selection.
 
 ## 🎯 Objective
 
-The Student Research Assistant chatbot provides quick and simple guidance to students who are beginning their research journey.
+The Student Research Assistant Chatbot provides quick and simple guidance to students who are beginning their research journey.
 
 ## 👥 Target Users
 
@@ -42,7 +42,39 @@ The chatbot can answer questions such as:
 
 ## 🚀 How to Run
 
-Install the required package:
+### 1. Clone the repository
 
 ```bash
+git clone https://github.com/RKYEngineering/student-research-assistant-chatbot.git
+
+2. Install the required package
 pip install -r requirements.txt
+3. Open the Jupyter Notebook
+
+Open:
+
+Student_Research_Assistant_Chatbot.ipynb
+
+Run the cells in order.
+
+📁 Project Structure
+student-research-assistant-chatbot/
+│
+├── Student_Research_Assistant_Chatbot.ipynb
+├── requirements.txt
+└── README.md
+📌 Project Status
+
+Currently implemented as a rule-based chatbot using Python and Gradio.
+
+🔮 Future Improvements
+Add AI/LLM-based responses
+Add PDF document question answering
+Add Retrieval-Augmented Generation (RAG)
+Add research paper summarization
+Deploy the chatbot as a permanent web application
+👨‍💻 Author
+
+RKYEngineering
+
+GitHub: https://github.com/RKYEngineering
