@@ -162,4 +162,4 @@ demo = gr.Interface(
     description="Ask questions about research papers, journals, DOI, and research topics."
 )
 
-demo.launch()
+demo.launch(share=True)
